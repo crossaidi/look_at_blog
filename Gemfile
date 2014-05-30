@@ -4,10 +4,13 @@ source 'https://rails-assets.org'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+gem 'paperclip', '4.1.1'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
-gem 'haml', '~> 4.0.5'
+gem 'haml-rails'
 
 gem 'rails-assets-foundation'
 

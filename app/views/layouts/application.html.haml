@@ -1,9 +1,9 @@
 !!!
-%html
+%html{'ng-app' => 'Lookatblog'}
   %head
     %title Look At Blog
     = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', controller_name
     = csrf_meta_tags
   %body
     = yield
