@@ -14,7 +14,11 @@ gem 'haml-rails'
 
 gem 'rails-assets-foundation'
 
+gem 'rails-assets-underscore'
+
 gem 'rails-assets-angular'
+gem 'rails-assets-angular-route'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

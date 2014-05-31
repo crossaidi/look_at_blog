@@ -1,0 +1,9 @@
+<h1 class="text-center">{{ data.current.name }}</h1>
+<div class="row">
+    <p>{{ data.current.body }}</p>
+</div>
+  <div class="row">
+    <a href="../" class="button">Back</a>
+    <a href="/posts/{{data.current.id}}/edit" class="button">Edit</a>
+    <a href="#" ng-click="deletePost(data.current.id)" class="button alert">Delete</a>
+</div>

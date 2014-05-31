@@ -1,0 +1,14 @@
+<div class="container" style="margin-top: 40px">
+  <h1 class="text-center">Edit post</h1>
+    <form>
+    <fieldset>
+      <label><strong>Title</strong></label>
+      <input ng-model="formData.postName" type="text" maxlength="250">
+      <label><strong>Body</strong></label>
+      <textarea style="height: 250px" ng-model="formData.postBody" ></textarea>
+      <a href="/posts/{{formData.postId}}" class="button">Back</a>
+      <button class="btn" ng-click="updatePost()">Update</button>
+      <button class="btn" ng-click="clearPost()">Clear post</button>
+    </fieldset>
+  </form>
+</div>

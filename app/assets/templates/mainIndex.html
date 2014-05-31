@@ -1,0 +1,5 @@
+<h2 class="text-center" ng-show="!data.posts">Loading...</h2>
+<div class="row" ng-repeat="post in data.posts">
+    <h2><a href="/posts/{{post.id}}">{{ post.name }}</a></h2>
+    <p>{{ post.body }}</p>
+</div>

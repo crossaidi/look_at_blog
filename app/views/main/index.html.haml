@@ -1,4 +1,3 @@
-%div{'ng-view' => true}
-  %div{'ng-controller' => 'indexController'}
-    %h1<
-      {{ title }}
+%div{class: 'fixed'}
+  %nav{class: 'top-bar', data: :topbar}
+%div{class: 'content', 'ng-view' => true}
