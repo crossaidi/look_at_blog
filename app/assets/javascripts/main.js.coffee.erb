@@ -12,10 +12,10 @@ Lookatblog.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
   $locationProvider.html5Mode(true);
 
   $routeProvider
-  .when('/posts/:postId/edit', { templateUrl: '/assets/mainEditPost.html', controller: 'editPostController' } )
-  .when('/posts/new', { templateUrl: '/assets/mainCreatePost.html', controller: 'createPostController' } )
-  .when('/posts/:postId', { templateUrl: '/assets/mainPost.html', controller: 'postController' } )
-  .otherwise({ templateUrl: '/assets/mainIndex.html', controller: 'indexController' } )
+  .when('/posts/:postId/edit', { templateUrl: '<%= path_to_asset("mainEditPost.html") %>', controller: 'editPostController' } )
+  .when('/posts/new', { templateUrl: '<%= path_to_asset("mainCreatePost.html") %>', controller: 'createPostController' } )
+  .when('/posts/:postId', { templateUrl: '<%= path_to_asset("mainPost.html") %>', controller: 'postController' } )
+  .otherwise({ templateUrl: '<%= path_to_asset("mainIndex.html") %>', controller: 'indexController' } )
 ])
 
 Lookatblog.config(["$httpProvider", (provider) ->
