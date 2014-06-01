@@ -32,7 +32,6 @@ gem 'jquery-rails'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'rails_12factor', group: :production
 
 group :development, :test do
@@ -43,13 +42,6 @@ group :development do
   gem 'spring'
   gem 'pry-rails'
 end
-
-gem 'unicorn', '~> 4.7.0'
-
-gem 'capistrano', '~> 3.0.1'
-gem 'capistrano-rvm', '~> 0.1.0'
-gem 'capistrano-rails', '~> 1.1.0'
-gem 'capistrano-bundler', '~> 1.1.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
