@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
+ruby '2.1.2'
+
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -33,13 +35,14 @@ gem 'jquery-rails'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
 end
 
 group :development do
+  gem 'spring'
   gem 'pry-rails'
 end
 # Use ActiveModel has_secure_password
