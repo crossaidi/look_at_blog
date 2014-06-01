@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   # resources :posts, path: '/api/posts'
 
-  get '*path' => redirect('/')
+  # get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
