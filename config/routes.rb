@@ -3,15 +3,15 @@ Rails.application.routes.draw do
     resources :posts
   end
   # resources :posts, path: '/api/posts'
-
-  # get '*path' => redirect('/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'main#index'
 
+  get '*path' => redirect('/')
   # Example of regular route:
+
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
