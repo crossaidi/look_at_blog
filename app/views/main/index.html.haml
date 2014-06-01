@@ -1,3 +1,16 @@
-%div{class: 'fixed'}
+.fixed
   %nav{class: 'top-bar', data: :topbar}
+    %ul{class: 'title-area'}
+      %li{class: 'name'}
+        %h1
+          %a{href: "/"}<
+            LOOK AT BLOG
+    %section{class: 'top-bar-section'}
+      %ul{class: 'left'}
+        %li{class: 'divider'}
+        %li
+          %a{href: "/posts/new", alt: 'Add Post', class: 'add-link'}<
+            +
+        %li{class: 'divider'}
+
 %div{class: 'content', 'ng-view' => true}

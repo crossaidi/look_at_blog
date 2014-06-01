@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require underscore
 //= require angular
 //= require angular-route
+//= require flow
+//= require ng-flow

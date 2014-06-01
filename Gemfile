@@ -18,6 +18,7 @@ gem 'rails-assets-underscore'
 
 gem 'rails-assets-angular'
 gem 'rails-assets-angular-route'
+gem 'rails-assets-ng-flow'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -39,7 +40,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'pry'
+  gem 'pry-rails'
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,14 +1,36 @@
-<div class="container" style="margin-top: 40px">
-  <h1 class="text-center">Edit post</h1>
+<div ng-init="initFlow($flow)" flow-init="{singleFile: true}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-name="flow" class="container">
+  <h2 class="text-center">Edit post</h2>
+  <div class="row">
     <form>
-    <fieldset>
-      <label><strong>Title</strong></label>
-      <input ng-model="formData.postName" type="text" maxlength="250">
-      <label><strong>Body</strong></label>
-      <textarea style="height: 250px" ng-model="formData.postBody" ></textarea>
-      <a href="/posts/{{formData.postId}}" class="button">Back</a>
-      <button class="btn" ng-click="updatePost()">Update</button>
-      <button class="btn" ng-click="clearPost()">Clear post</button>
-    </fieldset>
-  </form>
+      <div class="columns large-3">
+        <span class="button small" ng-hide="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Select image</span>
+        <span class="button small" ng-show="$flow.files.length" flow-btn flow-attrs="{accept:'image/*'}">Change</span>
+        <span class="button small alert" ng-click="$flow.cancel()" ng-show="$flow.files.length">Rollback</span>
+        <label>Image</label>
+        <div ng-show="$flow.files.length">
+          <img class="thumbnail img-box" flow-img="$flow.files[0]" />
+        </div>
+        <div class="thumbnail img-box" ng-show="formData.image_file_name && !$flow.files.length">
+          <img ng-src="{{ formData.medium }}"></img>
+        </div>
+      </div>
+      <div class="columns large-7">
+        <label>Title</label>
+        <input ng-model="formData.name" type="text" maxlength="250">
+        <small ng-show="unvalidate && !formData.name" class="error">
+          Title is required and must be a string.
+        </small>
+        <label>Post</label>
+        <textarea ng-model="formData.body"></textarea>
+        <small ng-show="unvalidate && !formData.body" class="error">
+          Post body is required and must be a text.
+        </small>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <a href="/posts/{{ postId }}" class="button">Back</a>
+    <a href="#" class="button" ng-click="updatePost()">Update</a>
+    <a href="#" class="button" ng-click="clearPost()">Clear</a>
+  </div>
 </div>

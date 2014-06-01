@@ -1,13 +1,8 @@
 @postController = ($scope, $location, $q, $routeParams, postService) ->
-  $scope.data =
-    postId: $routeParams.postId
-    current: {}
+  $scope.postId = $routeParams.postId
 
   $scope.setCurrentData = ->
-    post = postService.data.post
-    $scope.data.current.id = post.id
-    $scope.data.current.name = post.name
-    $scope.data.current.body = post.body
+    $scope.current = postService.data.post
 
   @deferred = $q.defer()
   @deferred.promise.then($scope.setCurrentData)

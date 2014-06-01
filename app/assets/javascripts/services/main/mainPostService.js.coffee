@@ -3,8 +3,16 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
     data: []
 
   postService.loadPosts = (deferred) ->
-    $http.get('/posts').success( (data) ->
+    $http.get('/api/posts').success( (data) ->
+      iterator = (e) ->
+        e.thumb = if e.image_file_name
+                    '/uploads/images/thumb/' + e.image_file_name
+                  else
+                    ''
+      _.each(data, iterator)
+
       postService.data.posts = data
+
       if deferred
         deferred.resolve()
     ).error( ->
@@ -15,16 +23,9 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
 
   postService.createPost = (newPost) ->
 
-    if newPost.postName == '' || newPost.postBody == ''
-      alert('Neither the Title nor the Body are allowed to be left blank.')
-      return false
+    data = getFormData(newPost)
 
-    data =
-      post:
-        name: newPost.postName
-        body: newPost.postBody
-
-    $http.post('/posts', data).success( (data) ->
+    $http.post('/api/posts', data).success( (data) ->
       postService.data.posts.push(data)
       $location.url('/posts/' + data.id)
     ).error( ->
@@ -35,16 +36,9 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
 
   postService.updatePost = (postId, updatePost) ->
 
-    if updatePost.postName == '' || updatePost.postBody == ''
-      alert('Neither the Title nor the Body are allowed to be left blank.')
-      return false
+    data = getFormData(updatePost)
 
-    data =
-      post:
-        name: updatePost.postName
-        body: updatePost.postBody
-
-    $http.put('/posts/' + postId, data).success( (data) ->
+    $http.put('/api/posts/' + postId, data).success( (data) ->
       $location.url('/posts/' + postId)
     ).error( ->
       console.error('Failed to update post.')
@@ -53,15 +47,18 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
     return true
 
   postService.deletePost = (postId) ->
-    $http.delete('/posts/' + postId).success( (data) ->
+    $http.delete('/api/posts/' + postId).success( (data) ->
       $location.url('/')
     ).error( ->
       console.error('Failed to delete post.')
     )
 
   postService.loadPost = (postId, deferred) ->
-    $http.get('/posts/' + postId).success( (data) ->
-      console.log(data)
+    $http.get('/api/posts/' + postId).success( (data) ->
+      data.medium = if data.image_file_name
+        '/uploads/images/medium/' + data.image_file_name
+      else
+        ''
       postService.data.post = data
       if deferred
         deferred.resolve()
@@ -70,6 +67,30 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
       if deferred
         deferred.reject('Failed to edit post.')
     )
+
+  postService.validateFields = ($scope) ->
+    if !$scope.formData.name || !$scope.formData.body
+      $scope.unvalidate = true
+      return false
+    else
+      return true
+
+  getFormData = (formData) ->
+    data =
+      post:
+        name: formData.name
+        body: formData.body
+
+    if formData.postImage
+      data.post.image =
+        imagePath: formData.postImage.path
+        imageContent: formData.postImage.type
+        imageData: formData.postImage.data
+
+    if formData.postImage == 'cleared'
+      data.post.image = null
+
+    data
 
   return postService
 ])

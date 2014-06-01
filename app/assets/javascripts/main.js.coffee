@@ -6,7 +6,7 @@
 #= require_tree ./services/main
 #= require_tree ./controllers/main
 
-Lookatblog = angular.module('Lookatblog', ['ngRoute'])
+Lookatblog = angular.module('Lookatblog', ['ngRoute', 'flow'])
 
 Lookatblog.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true);

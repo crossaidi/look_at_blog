@@ -1,9 +1,15 @@
-<h1 class="text-center">{{ data.current.name }}</h1>
+<h2 class="text-center">{{ current.name }}</h2>
 <div class="row">
-    <p>{{ data.current.body }}</p>
+	<div class="large-12 columns">
+		<figure ng-show="current.image_file_name" class="post-image">
+			<img ng-src="{{ current.medium }}"></img>
+		</figure>
+	    <p>{{ current.body }}</p>
+		<p class="post-date">{{ current.date | date:'dd, MMMM, yyyy HH:mm' }}</p>
+	</div>
 </div>
-  <div class="row">
+<div ng-show="current.body" class="row">
     <a href="../" class="button">Back</a>
-    <a href="/posts/{{data.current.id}}/edit" class="button">Edit</a>
-    <a href="#" ng-click="deletePost(data.current.id)" class="button alert">Delete</a>
+    <a href="/posts/{{postId}}/edit" class="button">Edit</a>
+    <a href="#" ng-click="deletePost(postId)" class="button alert">Delete</a>
 </div>

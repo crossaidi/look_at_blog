@@ -1,11 +1,11 @@
-class PostsController < ApplicationController
-  respond_to :json
+class Api::PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :process_image, only: [:update, :create]
 
   # GET /posts
   def index
-    @posts = Post.all.order(:id)
+    @posts = Post.all
     render json: @posts
   end
 
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     if @post.save
       render json: @post
     else
-      render "public/422", status: 422
+      render json: { status: 422 }
     end
   end
 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       render json: @post
     else
-      render "public/422", status: 422
+      render json: { status: 422 }
     end
   end
 
@@ -56,6 +56,12 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:name, :body, :excerpt)
+      params.require(:post).permit(:name, :body, :excerpt, :image)
+    end
+
+    def process_image
+      if params[:post][:image]
+        params[:post][:image] = PostsHelper.decode_image(params[:post][:image])
+      end
     end
 end

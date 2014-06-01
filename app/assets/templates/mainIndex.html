@@ -1,5 +1,18 @@
-<h2 class="text-center" ng-show="!data.posts">Loading...</h2>
-<div class="row" ng-repeat="post in data.posts">
-    <h2><a href="/posts/{{post.id}}">{{ post.name }}</a></h2>
-    <p>{{ post.body }}</p>
+<div class="loader" ng-show="!data.posts"></div>
+<div class="row">
+	<h1 class="text-center" ng-show="!data.posts.length">There is nothing...</h1>
+</div>
+<div class="posts">
+	<article ng-repeat="post in data.posts">
+		<div class="row">
+			<div class="columns large-2">
+		    	<img ng-show="post.image_file_name" ng-src="{{ post.thumb }}"></img>
+			</div>
+			<div ng-class="post.image_file_name?'large-10':'large-12'" class="columns">
+			    <h2><a href="/posts/{{post.id}}">{{ post.name }}</a></h2>
+			    <p>{{ post.excerpt }}</p>
+			    <p class="post-date">{{ post.date | date:'dd, MMMM, yyyy HH:mm' }}</p>
+			</div>
+		</div>
+	</article>
 </div>

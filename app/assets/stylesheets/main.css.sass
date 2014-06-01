@@ -1,8 +1,39 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
-@import "settings"
-@import "foundation"
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans)
+
+h1, h2
+  font-family: 'Proxima Nova Black', 'Helvetica', 'Arial'
+
+a
+  color: black
+  &:hover
+    color: #0b28fb
+
+label
+  padding-bottom: 5px
+
+p
+  text-align: justify
+
+article
+  padding-bottom: 15px
+
+textarea
+  height: 250px
 
 .content
   padding-top: 45px
+
+.loader
+  margin: 25px auto
+  width: 32px
+  height: 32px
+  background: asset-url("ajax-loader.gif")
+
+@font-face
+  font-family: 'Proxima Nova Black'
+  src: local('Proxima Nova Black')
+  src: font-url('proxima-nova-black.ttf') format('truetype')
