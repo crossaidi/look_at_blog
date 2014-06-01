@@ -6,7 +6,7 @@ class Api::PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-    render json: @posts
+    render json: @posts, root: false
   end
 
   # GET /posts/1
@@ -26,13 +26,13 @@ class Api::PostsController < ApplicationController
 
   # POST /posts
   def create
-    # @post = Post.new(post_params)
+    @post = Post.new(post_params)
 
-    # if @post.save
-      # render json: @post
-    # else
+    if @post.save
+      render json: @post
+    else
       render json: { result: -1 }
-    # end
+    end
   end
 
   # PATCH/PUT /posts/1

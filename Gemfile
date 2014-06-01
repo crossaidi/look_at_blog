@@ -7,6 +7,8 @@ gem 'pg'
 
 gem 'paperclip', '4.1.1'
 
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
