@@ -26,10 +26,13 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
     data = getFormData(newPost)
 
     $http.post('/api/posts', data).success( (data) ->
+      return false if isFailed(data)
+
       postService.data.posts.push(data)
       $location.url('/posts/' + data.id)
     ).error( ->
       console.error('Failed to create new post.')
+      alert('Something went wrong on server')
     )
 
     return true
@@ -39,9 +42,12 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
     data = getFormData(updatePost)
 
     $http.put('/api/posts/' + postId, data).success( (data) ->
+      return false if isFailed(data)
+
       $location.url('/posts/' + postId)
     ).error( ->
       console.error('Failed to update post.')
+      alert('Something went wrong on server')
     )
 
     return true
@@ -50,6 +56,7 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
     $http.delete('/api/posts/' + postId).success( (data) ->
       $location.url('/')
     ).error( ->
+      alert('Something went wrong on server')
       console.error('Failed to delete post.')
     )
 
@@ -73,6 +80,11 @@ angular.module('Lookatblog').factory('postService', ['$http', '$location', ($htt
       $scope.unvalidate = true
       return false
     else
+      return true
+
+  isFailed = (data) ->
+    if data.result == -1
+      alert('Something went wrong on server')
       return true
 
   getFormData = (formData) ->

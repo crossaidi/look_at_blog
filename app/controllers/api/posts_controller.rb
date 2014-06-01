@@ -26,13 +26,13 @@ class Api::PostsController < ApplicationController
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    # @post = Post.new(post_params)
 
-    if @post.save
-      render json: @post
-    else
-      render json: { status: 422 }
-    end
+    # if @post.save
+      # render json: @post
+    # else
+      render json: { result: -1 }
+    # end
   end
 
   # PATCH/PUT /posts/1
@@ -40,7 +40,7 @@ class Api::PostsController < ApplicationController
     if @post.update(post_params)
       render json: @post
     else
-      render json: { status: 422 }
+      render json: { result: -1 }
     end
   end
 
