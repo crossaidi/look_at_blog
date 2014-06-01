@@ -1,6 +1,6 @@
 I18n.enforce_available_locales = false
 
-set :application, 'educapsule'
+set :application, 'lookatblog'
 set :repo_url, 'git@github.com:crossaidi/look_at_blog.git'
 set :branch, 'master'
 
