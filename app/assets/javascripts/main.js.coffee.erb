@@ -6,9 +6,9 @@
 #= require_tree ./services/main
 #= require_tree ./controllers/main
 
-Lookatblog = angular.module('Lookatblog', ['ngRoute', 'flow'])
+Turboblog = angular.module('Turboblog', ['ngRoute', 'flow'])
 
-Lookatblog.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
+Turboblog.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
   $locationProvider.html5Mode(true);
 
   $routeProvider
@@ -18,6 +18,6 @@ Lookatblog.config(['$routeProvider', '$locationProvider', ($routeProvider, $loca
   .otherwise({ templateUrl: '<%= path_to_asset("mainIndex.html") %>', controller: 'indexController' } )
 ])
 
-Lookatblog.config(["$httpProvider", (provider) ->
+Turboblog.config(["$httpProvider", (provider) ->
   provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 ])

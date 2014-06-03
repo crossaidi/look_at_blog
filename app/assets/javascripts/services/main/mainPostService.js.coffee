@@ -1,4 +1,4 @@
-angular.module('Lookatblog').factory('postService', ['$http', '$location', ($http, $location) ->
+angular.module('Turboblog').factory('postService', ['$http', '$location', ($http, $location) ->
   postService =
     data: []
 
